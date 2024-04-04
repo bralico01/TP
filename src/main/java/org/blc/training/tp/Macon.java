@@ -27,7 +27,7 @@ public class Macon {
          */
         Util.out("Veuillez à spécifier le côté adjacent - longueur A [m] :");
         String numberStr = scan.next();
-        Float A = 0f;
+        float A = 0.0f;
         try {
             A = Float.valueOf(numberStr);
         } catch (Exception er) {

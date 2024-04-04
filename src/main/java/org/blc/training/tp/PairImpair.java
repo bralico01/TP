@@ -21,31 +21,40 @@ public class PairImpair {
         Util.out("=|=====================================================|=");
         Util.out("=| Pair ou Impair                                      |=");
         Util.out("=|=====================================================|=");
-        Util.out("Veuillez à spécifier un nombre uniquement : ");
-        String numberStr = scan.next();
-        
-        Integer value = 0;
-        try{
-            value = Integer.valueOf(numberStr);
-        }catch(Exception er){
-            Util.out("Vous devez spécifier un nombre entier svp ! Ex: 123");
-            return;
+
+        //
+        String numberStr = "";
+        if (arg.length >= 1) {
+            Util.out("Utilisation de la valeur en paramètre : " + arg[0]);
+            numberStr = arg[0];
+        } else {
+            Util.out("Veuillez à spécifier un nombre uniquement : ");
+            numberStr = scan.next();
         }
         
+        Integer value = 0;
+        try {
+            value = Integer.valueOf(numberStr);
+        } catch (NumberFormatException er) {
+            Util.out("Vous devez spécifier un nombre entier svp ! Ex: 123"
+                    + "\nErreur suivante : " + er.getMessage()
+                    + "\nLigne erreur : " + er.getLocalizedMessage());
+            return;
+        }
+
         // Preparation mesure d'identification
         Integer vala = value / 2;
         Integer valb = (value + 1) / 2;
         Integer val = vala - valb;
-        
+
         // Logique de présentation
         if (val == 0) {
-            Util.out("Le nombre "+ value + " est PAIR");
+            Util.out("Le nombre " + value + " est PAIR");
             Util.out(" > " + value + " / 2 = " + vala);
-        }else{
-            Util.out("Le nombre "+ value + " est IMPAIR");
-            Util.out(" > " + value + " / 2 = " + (value/2f));
+        } else {
+            Util.out("Le nombre " + value + " est IMPAIR");
+            Util.out(" > " + value + " / 2 = " + (value / 2f));
         }
-
         
     }
 }
