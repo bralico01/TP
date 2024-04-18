@@ -32,6 +32,13 @@ public class TP {
      * Options : Calculer le score de la personne Nombre pour atteindre un
      * niveau
      *
+     * On gagne des points en fonction du nombre de chances définies exempté du
+     * nombre d'essai échoué au préalable au multiple du niveau. Exemple :
+     * nombre de chance prédéfinie est de 6. Je suis au niveau 2. Je réalise un
+     * succès au 2ième essai sachant que mon score au premier niveau était de 3.
+     * Il vient que mon nouveau score = 3 + (6-1)*2 = 13.
+     *
+     *
      *
      */
     public static void trouveLeNombreAleatoireOptions() {
@@ -63,7 +70,7 @@ public class TP {
                     Integer value = -1;
                     Boolean isCorrectInput = false;
                     while (!isCorrectInput && !isQuit) { // Parce que les informatiosn saisie ne sont pas cohérente par rapport à un nombre ou à quitter
-                        out("Entrer un nombre de 0 à " + (10*level) + " : ");
+                        out("Entrer un nombre de 0 à " + (10 * level) + " : ");
                         try {
                             value = scan.nextInt();
                             isCorrectInput = true;
