@@ -11,7 +11,60 @@ import java.util.Scanner;
 public class TP {
 
     public static void main(String[] args) {
-        trouveLeNombreAleatoireOptions();
+//        trouveLeNombreAleatoireOptions();
+        trouverLaSuiteDuNombre();
+    }
+
+    /**
+     * Vous devez retrouver la suite d'une séquence de couleur. Les couleurs
+     * possible sont (rouge, vert, bleu, orange, marron, noire). La séquence
+     * peut être répétitive. L'utilisateur devra spécifier la séquence des
+     * couleurs.
+     * <p>
+     * Un système de niveau permet de démarrer à une séquence de 3 couleurs à
+     * retrouver
+     * <p>
+     * L'utilisateur pasera au niveau suivant dès que la séquence est trouvée.
+     * Le niveau suivant sera incrément d'une séquence complémentaire.
+     * <p>
+     * Un score sera attribué en fonction du nombre d'essai effecuté au niveau.
+     * <p>
+     * Un nombre chance max permet à l'utilisateur de continuer le jeux.
+     * <p>
+     * Bien évidement l'utilisateur peu arrêter à tout instant le jeux.
+     * <p>
+     * Il peut également poursuivre (recommencer)
+     * <p>
+     * Example :
+     * <p>
+     * Niveau 1 : le système gènre la séquence
+     * <p>
+     * | x | x | x | correspondant à | b | v | o |
+     * <p>
+     * L'utilisateur propose la séquence séparer comme suit v; n;r
+     * <p>
+     * Vous devez lui répondre | 1 | x | x | : le 1 permet d'indiquer une valeur
+     * bonne mais mal positionnée<p>
+     * Essai suivant l'utilisateur indique o;v;m >> | 1 | v | x | ...
+     * <p>
+     * si résultat ok >> | b | v | o |
+     * <p>
+     * Niveau 2 : le système gènere la séquence du niveau
+     * <p>
+     * | x | x | x | x | correspondant à | m | o | n | v |
+     * <p>
+     * ...
+     *
+     * <p>
+     * Astuces : utilisation de tableau argc[] >> TypeVariable n[tailleTableau];
+     */
+    public static void trouverLaSuiteDuNombre() {
+        out("|");
+        int i = 0;
+        while (i <= 3 + 0) {
+            out(" x |");
+            i++;
+        }
     }
 
     /**
@@ -52,7 +105,9 @@ public class TP {
              * Niveau de difficulté logiciel
              */
             Integer level = 1;
-            Integer chance = 5;
+            Integer chanceMax = 5;
+            Integer chance = chanceMax;
+            Integer score = 0;
             Scanner scan = new Scanner(System.in);
             Boolean isQuit = false;
             while (!isQuit && chance > 0) {// Passage de niveau
@@ -92,22 +147,28 @@ public class TP {
                     if (!isQuit) { // Only if user want to continue
                         // Compare si le nombre fourni par l'utilisateur correspond à l'inconnu
                         if (value == inconnu) {
-                            outn("Bravo le nombre était : " + inconnu + " !");
+                            out("Bravo le nombre était : " + inconnu + " ! ");
                             isValueCorrect = true;
+                            score += ((chanceMax - (chanceMax - chance)) * level);
                             // Inrémenter le passage de niveau
                             level++;
                         } else {
                             chance--;
                             if (value > inconnu) {
-                                out("Valeur fournie est trop grande !");
+                                out("Valeur fournie est trop grande ! ");
                             } else if (value < inconnu) {
-                                out("Valeur fournie est trop petite !");
+                                out("Valeur fournie est trop petite ! ");
                             }
-                            outn("Il vous reste " + chance + " chances");
+                            out("Il vous reste " + chance + " chances");
                         }
+                        outn(" Score actuel : " + score);
+                    } else {// condition if pour quitter
+                        out("=| Vous avez souhaitez quitter au niveau " + level + " avec un score de "
+                                + score + " pour un nombre de chance restant de " + chance);
+                        outn("=|=====================================================|=");
                     }
-                }
-            }
+                }// if info correct
+            }// if niveau
 
             /**
              * Vous avez perdu vous êtes informé
