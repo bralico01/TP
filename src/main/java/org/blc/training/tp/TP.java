@@ -58,43 +58,53 @@ public class TP {
      * <p>
      * Astuces : utilisation de tableau argc[] >> TypeVariable n[tailleTableau];
      */
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
     public static void trouverLaSuiteDuNombre() {
-        out("|");
-        int i = 0;
-        while (i <= 3 + 0) {
-            out(" x |");
-            i++;
-        }
-    }
+        //        out("|");
+        //        int i = 0;
+        //        while (i <= 3 + 0) {
+        //            out(" x |");
+        //            i++;
+        //        }
+        System.out.println(ANSI_RED + "This text is red!" + ANSI_RESET);
 
-    /**
-     *
-     * Options : chance
-     * <p>
-     * avec limitation d'essai : On octroie en démarrant le jeu un nombre défini
-     * de chance et ce nombre n'est pas renouvlable entre les essais.
-     *
-     * Options : Niveau difficulté
-     * <p>
-     * Niveau 0 - 0...10
-     * <p>
-     * Niveau 1 - 0...20
-     * <p>
-     * Niveau 2 - 0...30 ...
-     *
-     * Options : Calculer le score de la personne Nombre pour atteindre un
-     * niveau
-     *
-     * On gagne des points en fonction du nombre de chances définies exempté du
-     * nombre d'essai échoué au préalable au multiple du niveau. Exemple :
-     * nombre de chance prédéfinie est de 6. Je suis au niveau 2. Je réalise un
-     * succès au 2ième essai sachant que mon score au premier niveau était de 3.
-     * Il vient que mon nouveau score = 3 + (6-1)*2 = 13.
-     *
-     *
-     *
-     */
-    public static void trouveLeNombreAleatoireOptions() {
+}
+
+/**
+ *
+ * Options : chance
+ * <p>
+ * avec limitation d'essai : On octroie en démarrant le jeu un nombre défini de
+ * chance et ce nombre n'est pas renouvlable entre les essais.
+ *
+ * Options : Niveau difficulté
+ * <p>
+ * Niveau 0 - 0...10
+ * <p>
+ * Niveau 1 - 0...20
+ * <p>
+ * Niveau 2 - 0...30 ...
+ *
+ * Options : Calculer le score de la personne Nombre pour atteindre un niveau
+ *
+ * On gagne des points en fonction du nombre de chances définies exempté du
+ * nombre d'essai échoué au préalable au multiple du niveau. Exemple : nombre de
+ * chance prédéfinie est de 6. Je suis au niveau 2. Je réalise un succès au
+ * 2ième essai sachant que mon score au premier niveau était de 3. Il vient que
+ * mon nouveau score = 3 + (6-1)*2 = 13.
+ *
+ *
+ *
+ */
+public static void trouveLeNombreAleatoireOptions() {
         String yesno = "y";
 
         /**
